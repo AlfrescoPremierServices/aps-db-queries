@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.alfresco.support</groupId>
-    <artifactId>alfresco-db</artifactId>
+    <artifactId>aps-db</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>alfresco-db</name>
-    <description>Demo project for Spring Boot</description>
+    <name>aps-db</name>
+    <description>APS DB Queries</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
