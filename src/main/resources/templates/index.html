@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>APS DB Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Add navigation bar here -->
+	<div th:insert="navBar :: navBar"></div>
+
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <h1>Alfresco Process Services Database Reporting</h1>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="dbSize.html">Database</a> - Database Size Information</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="content.html">Content</a> - Content Mime Type and Size Information</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="usersAndGroups.html">Users and Groups</a> - Users, Groups and Capabilities Information</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="workflows.html">Processes and Tasks</a> - Workflows Processes and Tasks Information</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="deployments.html">Deployments</a> - Workflows Deployments Information</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="endPoints.html">End Points</a> - End Points Information</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="report.html" >Generate Report</a> - Run all queries</li>
+        </ul>
+    </div>
+</body>
+
+</html>

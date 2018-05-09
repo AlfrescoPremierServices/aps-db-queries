@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <title>End Points</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="webjars/datatables/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="webjars/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+
+        $(document).ready( function () {
+            $('table.noPaging-noSearching').DataTable({
+                "paging": false,
+                "info": false,
+                "searching": false,
+            });
+        } );
+
+        $(document).ready( function () {
+            $('table.display').DataTable();
+        } );
+    </script>
+
+	<!-- Add navigation bar here -->
+	<div th:insert="navBar :: navBar"></div>
+
+    <!-- alfresco End Points -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Alfresco End Points</b>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(listAlfrescoEndPoints)}">
+            <table class="display noPaging-noSearching">
+                <thead>
+                <tr>
+                    <th>Tenant</th>
+                    <th>Name</th>
+                    <th>Alfresco Repo URL</th>
+                    <th>Alfresco Share URL</th>
+                    <th>Version</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="endPoint : ${listAlfrescoEndPoints}">
+                    <td th:text="${endPoint.tenant}"></td>
+                    <td th:text="${endPoint.name}"></td>
+                    <td th:text="${endPoint.alfRepoUrl}"></td>
+                    <td th:text="${endPoint.alfShareUrl}"></td>
+                    <td th:text="${endPoint.version}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p></p>
+        </div>
+    </div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listAlfrescoEndPoints)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+    <!-- end of section -->
+
+    <!-- Database Sources -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Database Sources</b>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(listDataSources)}">
+            <table class="display noPaging-noSearching">
+                <thead>
+                <tr>
+                    <th>Tenant</th>
+                    <th>Name</th>
+                    <th>Data Source Config</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="endPoint : ${listDataSources}">
+                    <td th:text="${endPoint.tenant}"></td>
+                    <td th:text="${endPoint.name}"></td>
+                    <td th:text="${endPoint.dataSourceConfig}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p></p>
+        </div>
+    </div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listDataSources)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+    <!-- end of section -->
+
+    <!-- Rest End Points -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Rest End Points</b>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(listRestEndPoints)}">
+            <table class="display noPaging-noSearching">
+                <thead>
+                <tr>
+                    <th>Tenant</th>
+                    <th>Name</th>
+                    <th>Alfresco Repo URL</th>
+                    <th>Alfresco Share URL</th>
+                    <th>Version</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="endPoint : ${listRestEndPoints}">
+                    <td th:text="${endPoint.tenant}"></td>
+                    <td th:text="${endPoint.name}"></td>
+                    <td th:text="${endPoint.host}"></td>
+                    <td th:text="${endPoint.port}"></td>
+                    <td th:text="${endPoint.pathUri}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p></p>
+        </div>
+    </div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listRestEndPoints)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+    <!-- end of section -->
+
+ </body>
+
+</html>
