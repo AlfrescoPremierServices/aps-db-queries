@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <title>Content Size</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="webjars/datatables/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="webjars/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('table.noPaging-noSearching').DataTable({
+                "paging": false,
+                "info": false,
+                "searching": false,
+            });
+        } );
+
+        $(document).ready( function () {
+            $('table.display').DataTable();
+        } );
+    </script>
+
+	<!-- Add navigation bar here -->
+	<div th:insert="navBar :: navBar"></div>
+
+    <!-- Content Size -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Total Content Size</b>
+        </div>
+
+        <table class="display noPaging-noSearching">
+            <thead>
+            <tr>
+                <th>Number of Documents</th>
+                <th>Total Content Size (MB)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${docsNumber}"></td>
+                <td th:text="${contentSize}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p></p>
+    </div>
+    <!-- end of section -->
+
+        <!-- Default panel contents -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Content Size by Mimetype</b>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(listContentSizeByMimeType)}">
+            <table class="display noPaging-noSearching">
+                <thead>
+                <tr>
+                    <th>Mimetype</th>
+                    <th>Count</th>
+                    <th>Size (MB)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="content : ${listContentSizeByMimeType}">
+                    <td th:text="${content.mimeType}"></td>
+                    <td th:text="${content.occurrences}"></td>
+                    <td th:text="${content.diskSpace}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p></p>
+        </div>
+    </div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listContentSizeByMimeType)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+    <!-- end of section -->
+
+ </body>
+
+</html>
