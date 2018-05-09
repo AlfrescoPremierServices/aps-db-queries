@@ -36,6 +36,9 @@ The steps to build the application are:
  - Compile and build application
 
 ### Compiling and building the executable jar file
+
+**Note** : There is a compiled executable jar available in the target folder in case you just want to use that one.
+
 Compile and build the application using Maven
 ```sh
 $ cd aps-db-queries
