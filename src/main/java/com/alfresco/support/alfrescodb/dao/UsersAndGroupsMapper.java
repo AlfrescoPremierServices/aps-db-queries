@@ -12,14 +12,14 @@ public interface UsersAndGroupsMapper {
             "from USER_GROUP, GROUPS, TENANT \n" +
             "where GROUPS.id = USER_GROUP.group_id \n" +
             "and TENANT.id = GROUPS.tenant_id \n" +
-            "group by GROUPS.name, GROUPS.tenant_id")
+            "group by GROUPS.name, TENANT.name")
     List<UsersAndGroups> findUsersPerGroup();
 
     @Select("select GROUPS.name groupName, GROUP_CAPABILITY.name capability, TENANT.name tenantName \n" +
             "from GROUP_CAPABILITY, GROUPS, TENANT \n" +
             "where GROUPS.id = GROUP_CAPABILITY.group_id \n" +
             "and TENANT.id = GROUPS.tenant_id \n" +
-            "order by GROUPS.name, GROUPS.tenant_id" )
+            "order by GROUPS.name, TENANT.name" )
     List<UsersAndGroups> findCapabilitiesPerGroup();
 
     @Select("select count(*) as occurrences, TENANT.name \n" +
@@ -31,6 +31,6 @@ public interface UsersAndGroupsMapper {
     @Select("select count(*) as occurrences, TENANT.name " +
             "from GROUPS, TENANT " +
             "where TENANT.id = GROUPS.tenant_id " +
-            "group by GROUPS.tenant_id")
+            "group by TENANT.name")
             List<UsersAndGroups> findGroups();
 }
