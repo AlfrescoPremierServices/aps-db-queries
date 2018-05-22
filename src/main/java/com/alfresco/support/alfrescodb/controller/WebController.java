@@ -152,8 +152,8 @@ public class WebController {
             out.write("\n\nOpen Tasks");
             out.write("\nTenant, Process Definition, Task Name, No Occurrences");
             if (listOpenTasks != null) {
-                for (int i = 0; i < listOpenWorkflows.size(); i++) {
-                    out.write(listOpenWorkflows.get(i).printTasks());
+                for (int i = 0; i < listOpenTasks.size(); i++) {
+                    out.write(listOpenTasks.get(i).printTasks());
                 }
             }
 
