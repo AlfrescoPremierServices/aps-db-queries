@@ -256,7 +256,51 @@
         <p></p>
     </div>
 	<!-- End of section -->
+	
+	
+	
+	
+	
+		<!-- Long Running Processes -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Long Running Processes</b>
+        </div>
 
+		<div th:if="${not #lists.isEmpty(listLongRunningWorkflows)}">
+			<table class="display" cellspacing="0" width="100%">
+				<thead>
+				<tr>
+                    <th>Tenant</th>
+                    <th>Process Definition</th>
+					<th>Start Time</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="workflow : ${listLongRunningWorkflows}">
+                    <td th:text="${workflow.tenantName}"></td>
+                    <td th:text="${workflow.procDefName}"></td>
+					<td th:text="${workflow.startTime}"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listLongRunningWorkflows)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+	<!-- End of section -->
+
+	
+	
+	
+	
 </body>
 
 </html>

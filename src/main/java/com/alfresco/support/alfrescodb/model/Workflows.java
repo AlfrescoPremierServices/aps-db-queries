@@ -10,6 +10,8 @@ public class Workflows {
 	private String tenantName;
 	private String deployTime;
 	private String version;
+	
+	private String startTime;
 
 	public void setProcDefName(String procDefName) {
 		this.procDefName = procDefName;
@@ -83,4 +85,26 @@ public class Workflows {
 	public String printDeployments() {
 		return String.format("\n%s, %s, %s, %s", tenantName, procDefName, version, deployTime);
 	}
+	
+	
+	
+	
+	
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getStartTime(){
+		return this.startTime;
+	}
+	
+	public String printLongRunningProcesses() {
+		return String.format("\n%s, %s, %s", tenantName, procDefName, startTime);
+	}
+	
+	
+	
+	
+	
+	
 }

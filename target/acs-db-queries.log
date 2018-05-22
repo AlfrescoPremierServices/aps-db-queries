@@ -1,0 +1,8 @@
+2018-05-22 14:55:53.664  INFO 11252 --- [main] c.a.s.alfrescodb.AlfrescoDbApplication   : Starting AlfrescoDbApplication v0.0.1-SNAPSHOT on work with PID 11252 (C:\Users\Cody Collins\Documents\Premier\Git\aps-db-queries\target\aps-db-0.0.1-SNAPSHOT.jar started by Cody Collins in C:\Users\Cody Collins\Documents\Premier\Git\aps-db-queries\target)
+2018-05-22 14:55:53.669  INFO 11252 --- [main] c.a.s.alfrescodb.AlfrescoDbApplication   : No active profile set, falling back to default profiles: default
+2018-05-22 14:55:56.423  INFO 11252 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 9999 (http)
+2018-05-22 14:55:59.131  INFO 11252 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 9999 (http)
+2018-05-22 14:55:59.140  INFO 11252 --- [main] c.a.s.alfrescodb.AlfrescoDbApplication   : Started AlfrescoDbApplication in 6.062 seconds (JVM running for 6.676)
+2018-05-22 14:59:32.947  INFO 860 --- [main] c.a.s.alfrescodb.AlfrescoDbApplication   : Starting AlfrescoDbApplication v0.0.1-SNAPSHOT on work with PID 860 (C:\Users\Cody Collins\Documents\Premier\Git\aps-db-queries\target\aps-db-0.0.1-SNAPSHOT.jar started by Cody Collins in C:\Users\Cody Collins\Documents\Premier\Git\aps-db-queries\target)
+2018-05-22 14:59:32.952  INFO 860 --- [main] c.a.s.alfrescodb.AlfrescoDbApplication   : No active profile set, falling back to default profiles: default
+2018-05-22 14:59:35.400  INFO 860 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 9999 (http)

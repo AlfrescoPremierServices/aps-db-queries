@@ -111,6 +111,19 @@ public class SqlMapperController {
     public List <Workflows> getProcessDeployments(){
         return workflowMapper.processDeployments();
     }
+	
+	
+	
+	
+	
+	public List findLongRunningWorkflows(){
+        return workflowMapper.longRunningProcesses();
+	}	
+		
+		
+		
+		
+		
 
     // Content Sizing
     public List <Content> getContentSizeByMimeType(){

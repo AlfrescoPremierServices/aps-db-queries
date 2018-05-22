@@ -55,4 +55,14 @@ public interface WorkflowMapper {
             "where ACT_RE_DEPLOYMENT.ID_ = ACT_RE_PROCDEF.DEPLOYMENT_ID_ " +
             "order by ACT_RE_PROCDEF.VERSION_ asc")
     List<Workflows> processDeployments();
+	
+	
+	
+	
+	
+	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, ACT_RE_PROCDEF.NAME_ procDefName, ACT_HI_PROCINST.START_TIME_ startTime " +
+        "from ACT_HI_PROCINST, ACT_RE_PROCDEF " +
+        "where END_TIME_ is null " +
+        "and ACT_HI_PROCINST.PROC_DEF_ID_= ACT_RE_PROCDEF.ID_ ")
+    List<Workflows> longRunningProcesses();
 }

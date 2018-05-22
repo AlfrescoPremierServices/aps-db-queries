@@ -183,6 +183,25 @@ public class WebController {
                     out.write(listClosedSingleTasks.get(i).printSingleTasks());
                 }
             }
+			
+			
+			
+			
+			
+			List < Workflows > listLongRunningWorkflows = sqlMapper.findLongRunningWorkflows();
+            out.write("\n\nLong Running Workflows");
+            out.write("\nTenant, Process Definition, Start Time");
+            if (listLongRunningWorkflows != null) {
+                for (int i = 0; i < listLongRunningWorkflows.size(); i++) {
+                    out.write(listLongRunningWorkflows.get(i).printLongRunningProcesses());
+                }
+            }
+			
+			
+			
+			
+			
+			
 
             // Process Deployments
             List < Workflows > listDeployments = sqlMapper.getProcessDeployments();
@@ -230,6 +249,13 @@ public class WebController {
         // Process Deployments
         List < Workflows > listProcessDeployments = sqlMapper.getProcessDeployments();
         model.addAttribute("listProcessDeployments", listProcessDeployments);
+		
+		
+		
+		
+		
+		List < Workflows > listLongRunningWorkflows = sqlMapper.findLongRunningWorkflows();
+		model.addAttribute("listLongRunningWorkflows", listLongRunningWorkflows);
     }
 
     @RequestMapping("/dbSize")
