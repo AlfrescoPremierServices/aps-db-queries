@@ -32,5 +32,5 @@ public interface UsersAndGroupsMapper {
             "from GROUPS, TENANT " +
             "where TENANT.id = GROUPS.tenant_id " +
             "group by TENANT.name")
-            List<UsersAndGroups> findGroups();
+    List<UsersAndGroups> findGroups();
 }
