@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <title>Alfresco DB Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" language="javascript" src="webjars/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.noPaging').DataTable({
+            "paging": false,
+            "info": false,
+            "order": [3, 'desc'],
+        });
+    } );
+
+    $(document).ready( function () {
+        $('table.noPaging-noSearching').DataTable({
+            "paging": false,
+            "info": false,
+            "searching": false,
+            "order": [3, 'desc'],
+        });
+    } );
+
+    $(document).ready( function () {
+        $('table.display').DataTable();
+    } );
+</script>
+
+    <!-- Add navigation bar here -->
+	<div th:insert="navBar :: navBar"></div>
+
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Report Generated</b>
+        </div>
+
+        <table class="display noPaging-noSearching">
+            <thead>
+            <td>
+                <p></p>
+                <th>Name:   </th>
+                <td th:text="${reportFile}"></td>
+            </tr>
+            </thead>
+        </table>
+        </p>
+    </div>
+
+</body>
+
+</html>

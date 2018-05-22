@@ -40,18 +40,18 @@ public interface DbSizeMapper {
     String findDbSizeMysql();
 
     // Oracle Queries
-    @Select("select sum(bytes)/1048576 SizeMB, segment_name tableName" +
-            "from user_extents" +
-            "where segment_name in (" +
-            "     select table_name from all_tables)" +
+    @Select("select sum(bytes)/1048576 SizeMB, segment_name tableName " +
+            "from user_extents " +
+            "where segment_name in ( " +
+            "     select table_name from all_tables )" +
             "group by segment_name")
     List<OracleRelationInfo> findTablesInfoOracle();
 
-    @Select("select sum(u.bytes)/1048576 SizeMB, u.segment_name indexName, i.table_name tableName" +
-            "from user_extents u" +
-            "join all_ind_columns i" +
-            "     on u.segment_name = i.index_name" +
-            "     and i.column_position = 1" +
+    @Select("select sum(u.bytes)/1048576 SizeMB, u.segment_name indexName, i.table_name tableName " +
+            "from user_extents u " +
+            "join all_ind_columns i " +
+            "     on u.segment_name = i.index_name " +
+            "     and i.column_position = 1 " +
             "group by u.segment_name, i.table_name")
     List<OracleRelationInfo> findIndexesInfoOracle();
 

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <title>Authorities</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="webjars/datatables/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="webjars/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('table.display').DataTable({
+                "order": [0, 'asc'],
+            });
+        } );
+    </script>
+
+	<!-- Add navigation bar here -->
+	<div th:insert="navBar :: navBar"></div>
+
+    <!-- Users per Group -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Users per Group</b>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(listUsersAndGroups)}">
+            <table class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Tenant</th>
+                    <th>Group Name</th>
+                    <th>Users Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="groups : ${listUsersAndGroups}">
+                    <td th:text="${groups.tenantName}"></td>
+                    <td th:text="${groups.groupName}"></td>
+                    <td th:text="${groups.occurrences}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listUsersAndGroups)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+    <!-- end of section -->
+
+	<!-- Groups Capabilities -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Groups Capabilities</b>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(listGroupsCapabilities)}">
+			<table class="display" cellspacing="0" width="100%">
+	            <thead>
+	                <tr>
+                        <th>Tenant</th>
+                        <th>Group Name</th>
+						<th>Capability</th>
+					</tr>
+	            </thead>
+	            <tbody>
+	                <tr th:each="groups : ${listGroupsCapabilities}">
+                        <td th:text="${groups.tenantName}"></td>
+                        <td th:text="${groups.groupName}"></td>
+						<td th:text="${groups.capability}"></td>
+	                </tr>
+	            </tbody>
+	        </table>
+        </div>
+	</div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listGroupsCapabilities)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+	<!-- end of section -->
+ </body>
+
+</html>
