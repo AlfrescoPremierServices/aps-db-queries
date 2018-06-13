@@ -63,6 +63,7 @@ public interface WorkflowMapper {
 	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, ACT_RE_PROCDEF.NAME_ procDefName, ACT_HI_PROCINST.START_TIME_ startTime " +
         "from ACT_HI_PROCINST, ACT_RE_PROCDEF " +
         "where END_TIME_ is null " +
-        "and ACT_HI_PROCINST.PROC_DEF_ID_= ACT_RE_PROCDEF.ID_ ")
+        "and ACT_HI_PROCINST.PROC_DEF_ID_= ACT_RE_PROCDEF.ID_ " +
+		"order by ACT_HI_PROCINST.START_TIME_ asc")
     List<Workflows> longRunningProcesses();
 }
