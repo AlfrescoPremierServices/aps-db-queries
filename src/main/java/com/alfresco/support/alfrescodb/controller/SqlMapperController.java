@@ -116,10 +116,15 @@ public class SqlMapperController {
 	
 	
 	
+	//Cody Addition
 	public List findLongRunningWorkflows(){
         return workflowMapper.longRunningProcesses();
-	}	
-		
+	}
+
+	public List findCancelledWorkflows(){
+        return workflowMapper.cancelledProcesses();
+	}		
+	//End Cody Addition	
 		
 		
 		

@@ -60,10 +60,25 @@ public interface WorkflowMapper {
 	
 	
 	
+	
+	
+	
+	
+	
+	//Cody Addition
 	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, ACT_RE_PROCDEF.NAME_ procDefName, ACT_HI_PROCINST.START_TIME_ startTime " +
         "from ACT_HI_PROCINST, ACT_RE_PROCDEF " +
         "where END_TIME_ is null " +
         "and ACT_HI_PROCINST.PROC_DEF_ID_= ACT_RE_PROCDEF.ID_ " +
 		"order by ACT_HI_PROCINST.START_TIME_ asc")
     List<Workflows> longRunningProcesses();
+	
+	
+	
+	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, ACT_HI_PROCINST.DELETE_REASON_ deleteReason, count(*) occurrences " +
+		"from RBCORACLE.ACT_HI_PROCINST " +
+		"where RBCORACLE.ACT_HI_PROCINST.DELETE_REASON_ is not null " +
+		"group by ACT_HI_PROCINST.DELETE_REASON_, ACT_HI_PROCINST.TENANT_ID_")
+	List<Workflows> cancelledProcesses();
+	//End Cody Addition
 }

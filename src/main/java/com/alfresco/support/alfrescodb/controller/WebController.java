@@ -187,7 +187,7 @@ public class WebController {
 			
 			
 			
-			
+			//Cody Addition
 			List < Workflows > listLongRunningWorkflows = sqlMapper.findLongRunningWorkflows();
             out.write("\n\nLong Running Workflows");
             out.write("\nTenant, Process Definition, Start Time");
@@ -196,6 +196,18 @@ public class WebController {
                     out.write(listLongRunningWorkflows.get(i).printLongRunningProcesses());
                 }
             }
+			
+			
+			
+			List < Workflows > listCancelledWorkflows = sqlMapper.findCancelledWorkflows();
+            out.write("\n\nCancelled Workflows");
+            out.write("\nTenant, Delete Reason, Occurrences");
+            if (listCancelledWorkflows != null) {
+                for (int i = 0; i < listCancelledWorkflows.size(); i++) {
+                    out.write(listCancelledWorkflows.get(i).printCancelledProcesses());
+                }
+            }
+			//End Cody Addition
 			
 			
 			
@@ -253,9 +265,14 @@ public class WebController {
 		
 		
 		
-		
+		//Cody Addition
 		List < Workflows > listLongRunningWorkflows = sqlMapper.findLongRunningWorkflows();
 		model.addAttribute("listLongRunningWorkflows", listLongRunningWorkflows);
+		
+		List < Workflows > listCancelledWorkflows = sqlMapper.findCancelledWorkflows();
+		model.addAttribute("listCancelledWorkflows", listCancelledWorkflows);
+		//End Cody Additon
+		
     }
 
     @RequestMapping("/dbSize")

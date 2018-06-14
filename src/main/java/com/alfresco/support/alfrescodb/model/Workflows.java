@@ -26,6 +26,7 @@ public class Workflows {
 	
 	private String startTime;
 	private String age;
+	private String deleteReason;
 
 	public void setProcDefName(String procDefName) {
 		this.procDefName = procDefName;
@@ -104,6 +105,12 @@ public class Workflows {
 	
 	
 	
+	
+	
+	
+	
+	
+	//Cody Addition
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
@@ -199,5 +206,22 @@ public class Workflows {
 	
 	public String printLongRunningProcesses() {
 		return String.format("\n%s, %s, %s", tenantName, procDefName, startTime);
-	}	
+	}
+	
+	
+	
+	
+	
+	public String getDeleteReason() {
+		return this.deleteReason;
+	}
+
+	public void setDeleteReason(String deleteReason) {
+		this.deleteReason = deleteReason;
+	} 
+	
+	public String printCancelledProcesses() {
+		return String.format("\n%s, %s, %s", tenantName, deleteReason, occurrences);
+	}
+	//End Cody Addition
 }
