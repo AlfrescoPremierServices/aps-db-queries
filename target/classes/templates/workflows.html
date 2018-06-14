@@ -32,6 +32,7 @@
         $(document).ready( function () {
             $('table.display').DataTable();
         } );
+
     </script>
 
     <!-- Add navigation bar here -->
@@ -274,6 +275,7 @@
                     <th>Tenant</th>
                     <th>Process Definition</th>
 					<th>Start Time</th>
+					<th>Age(days)</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -281,6 +283,7 @@
                     <td th:text="${workflow.tenantName}"></td>
                     <td th:text="${workflow.procDefName}"></td>
 					<td th:text="${workflow.startTime}"></td>
+					<td th:text="${workflow.age}"></td>
 				</tr>
 				</tbody>
 			</table>

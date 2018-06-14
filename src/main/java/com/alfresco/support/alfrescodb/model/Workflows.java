@@ -1,5 +1,18 @@
 package com.alfresco.support.alfrescodb.model;
 
+
+
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+
+
+
+
 public class Workflows {
     private int occurrences;
     private int open;
@@ -12,6 +25,7 @@ public class Workflows {
 	private String version;
 	
 	private String startTime;
+	private String age;
 
 	public void setProcDefName(String procDefName) {
 		this.procDefName = procDefName;
@@ -98,13 +112,92 @@ public class Workflows {
 		return this.startTime;
 	}
 	
-	public String printLongRunningProcesses() {
-		return String.format("\n%s, %s, %s", tenantName, procDefName, startTime);
+	public void setAge(String startTime) {
+		
+		try{
+		
+			LocalDateTime now = LocalDateTime.now();
+		
+			//Source: https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java/29812532
+			String CurrentDate=  now.toString();
+			String StartDate=  this.startTime;
+			
+			//cut the time off of today's date
+			String arrayCurrent[]=CurrentDate.split("T");
+			//cut the time off of the start date
+			String arrayStart[]=StartDate.split(" ");
+
+			Date date1;
+			Date date2;
+
+			SimpleDateFormat dates = new SimpleDateFormat("yyyy/MM/dd");
+
+			//Setting dates
+			date1 = dates.parse(arrayCurrent[0].replace("-","/"));
+			date2 = dates.parse(arrayStart[0].replace("-","/"));
+
+			//Comparing dates
+			long difference = Math.abs(date1.getTime() - date2.getTime());
+			long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+			//Convert long to String
+			String dayDifference = Long.toString(differenceDates);
+		
+		
+		
+			this.age = dayDifference;
+		}
+		catch (Exception exception) {
+			this.age=exception.toString();
+		}
+		
+		
+
+	}
+
+	public String getAge(){
+		
+		try{
+		
+			LocalDateTime now = LocalDateTime.now();
+		
+			//Source: https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java/29812532
+			String CurrentDate=  now.toString();
+			String StartDate=  this.startTime;
+			
+			//cut the time off of today's date
+			String arrayCurrent[]=CurrentDate.split("T");
+			//cut the time off of the start date
+			String arrayStart[]=StartDate.split(" ");
+
+			Date date1;
+			Date date2;
+
+			SimpleDateFormat dates = new SimpleDateFormat("yyyy/MM/dd");
+
+			//Setting dates
+			date1 = dates.parse(arrayCurrent[0].replace("-","/"));
+			date2 = dates.parse(arrayStart[0].replace("-","/"));
+
+			//Comparing dates
+			long difference = Math.abs(date1.getTime() - date2.getTime());
+			long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+			//Convert long to String
+			String dayDifference = Long.toString(differenceDates);
+		
+		
+		
+			this.age = dayDifference;
+		}
+		catch (Exception exception) {
+			this.age=exception.toString();
+		}
+		
+		return this.age;
 	}
 	
-	
-	
-	
-	
-	
+	public String printLongRunningProcesses() {
+		return String.format("\n%s, %s, %s", tenantName, procDefName, startTime);
+	}	
 }
