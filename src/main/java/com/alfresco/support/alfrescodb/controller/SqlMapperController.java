@@ -123,7 +123,15 @@ public class SqlMapperController {
 
 	public List findCancelledWorkflows(){
         return workflowMapper.cancelledProcesses();
-	}		
+	}
+
+	public List findCompletedWorkflows(){
+        return workflowMapper.completedProcesses();
+	}	
+	
+	public List findOpenWorkflowsCount(){
+        return workflowMapper.openProcessesCount();
+	}	
 	//End Cody Addition	
 		
 		
@@ -155,5 +163,4 @@ public class SqlMapperController {
     public List <RestEndPoint> getRestEndPoints(){
         return connectorsMapper.getRestEndPoints();
     }
-
 }

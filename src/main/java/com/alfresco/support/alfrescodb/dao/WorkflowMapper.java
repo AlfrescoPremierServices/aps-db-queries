@@ -76,9 +76,25 @@ public interface WorkflowMapper {
 	
 	
 	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, ACT_HI_PROCINST.DELETE_REASON_ deleteReason, count(*) occurrences " +
-		"from RBCORACLE.ACT_HI_PROCINST " +
-		"where RBCORACLE.ACT_HI_PROCINST.DELETE_REASON_ is not null " +
+		"from ACT_HI_PROCINST " +
+		"where ACT_HI_PROCINST.DELETE_REASON_ is not null " +
 		"group by ACT_HI_PROCINST.DELETE_REASON_, ACT_HI_PROCINST.TENANT_ID_")
 	List<Workflows> cancelledProcesses();
+	
+	
+	
+	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, count(*) occurrences " +
+		"from ACT_HI_PROCINST " +
+		"where ACT_HI_PROCINST.END_TIME_ is not null and ACT_HI_PROCINST.DELETE_REASON_ is null " +
+		"group by ACT_HI_PROCINST.TENANT_ID_")
+	List<Workflows> completedProcesses();
+	
+	
+	
+	@Select("select ACT_HI_PROCINST.TENANT_ID_ tenantName, count(*) occurrences " +
+		"from ACT_HI_PROCINST " +
+		"where ACT_HI_PROCINST.END_TIME_ is null " +
+		"group by ACT_HI_PROCINST.TENANT_ID_")
+	List<Workflows> openProcessesCount();
 	//End Cody Addition
 }

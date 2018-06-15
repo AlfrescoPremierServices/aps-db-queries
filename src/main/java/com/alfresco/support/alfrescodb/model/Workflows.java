@@ -223,5 +223,21 @@ public class Workflows {
 	public String printCancelledProcesses() {
 		return String.format("\n%s, %s, %s", tenantName, deleteReason, occurrences);
 	}
+	
+	
+	
+	
+	
+	public String printCompletedProcesses() {
+		return String.format("\n%s, %s", tenantName, occurrences);
+	}
+	
+	
+	
+	
+	
+	public String printOpenProcessesCount() {
+		return String.format("\n%s, %s", tenantName, occurrences);
+	}
 	//End Cody Addition
 }

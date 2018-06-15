@@ -207,6 +207,28 @@ public class WebController {
                     out.write(listCancelledWorkflows.get(i).printCancelledProcesses());
                 }
             }
+			
+			
+			
+			List < Workflows > listCompletedWorkflows = sqlMapper.findCompletedWorkflows();
+            out.write("\n\nCompleted Workflows");
+            out.write("\nTenant, Occurrences");
+            if (listCompletedWorkflows != null) {
+                for (int i = 0; i < listCompletedWorkflows.size(); i++) {
+                    out.write(listCompletedWorkflows.get(i).printCompletedProcesses());
+                }
+            }
+			
+			
+			
+			List < Workflows > listOpenWorkflowsCount = sqlMapper.findOpenWorkflowsCount();
+            out.write("\n\nOpen Workflow Count");
+            out.write("\nTenant, Occurrences");
+            if (listOpenWorkflowsCount != null) {
+                for (int i = 0; i < listOpenWorkflowsCount.size(); i++) {
+                    out.write(listOpenWorkflowsCount.get(i).printOpenProcessesCount());
+                }
+            }
 			//End Cody Addition
 			
 			
@@ -269,8 +291,20 @@ public class WebController {
 		List < Workflows > listLongRunningWorkflows = sqlMapper.findLongRunningWorkflows();
 		model.addAttribute("listLongRunningWorkflows", listLongRunningWorkflows);
 		
+		
+		
 		List < Workflows > listCancelledWorkflows = sqlMapper.findCancelledWorkflows();
 		model.addAttribute("listCancelledWorkflows", listCancelledWorkflows);
+		
+		
+		
+		List < Workflows > listCompletedWorkflows = sqlMapper.findCompletedWorkflows();
+		model.addAttribute("listCompletedWorkflows", listCompletedWorkflows);	
+
+
+
+		List < Workflows > listOpenWorkflowsCount = sqlMapper.findOpenWorkflowsCount();
+		model.addAttribute("listOpenWorkflowsCount", listOpenWorkflowsCount);		
 		//End Cody Additon
 		
     }

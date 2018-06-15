@@ -321,7 +321,7 @@
 				<thead>
 				<tr>
                     <th>Tenant</th>
-                    <th>Delete Reason</th>
+                    <th>Cancelled By</th>
 					<th>Count</th>
 				</tr>
 				</thead>
@@ -339,6 +339,83 @@
     <div>
         <p></p>
         <div class="panel panel-default " th:if="${#lists.isEmpty(listCancelledWorkflows)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+	<!-- End of section -->
+	
+	
+	
+	
+	
+<!-- Completed Processes -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Completed Processes</b>
+        </div>
+
+		<div th:if="${not #lists.isEmpty(listCompletedWorkflows)}">
+			<table class="display" cellspacing="0" width="100%">
+				<thead>
+				<tr>
+                    <th>Tenant</th>
+					<th>Count</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="workflow : ${listCompletedWorkflows}">
+                    <td th:text="${workflow.tenantName}"></td>
+					<td th:text="${workflow.occurrences}"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listCompletedWorkflows)}">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+            No Results Found
+        </div>
+        <p></p>
+    </div>
+	<!-- End of section -->
+	
+	
+	
+	
+	
+	
+<!-- Open Processes -->
+    <div class="center panel panel-primary">
+        <div class="panel-heading">
+            <b>Open Processes Count</b>
+        </div>
+
+		<div th:if="${not #lists.isEmpty(listOpenWorkflowsCount)}">
+			<table class="display" cellspacing="0" width="100%">
+				<thead>
+				<tr>
+                    <th>Tenant</th>
+					<th>Count</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="workflow : ${listOpenWorkflowsCount}">
+                    <td th:text="${workflow.tenantName}"></td>
+					<td th:text="${workflow.occurrences}"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+    <div>
+        <p></p>
+        <div class="panel panel-default " th:if="${#lists.isEmpty(listOpenWorkflowsCount)}">
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
             No Results Found
         </div>
